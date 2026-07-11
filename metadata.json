@@ -1,0 +1,6 @@
+{
+  "name": "Hindi Shayari Portal",
+  "description": "A modern, fully responsive Hindi Shayari portal with dynamic mood-shifting gradients, social media sharing, daily curated verses, and advanced filtering powered by AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
