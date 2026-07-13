@@ -1,4 +1,4 @@
-# AapkiShayari ✍️✨
+# AapkiShayari ✍️
 <img width="1146" height="656" alt="image" src="https://github.com/user-attachments/assets/73de8e99-9461-4dfa-96e8-ba0bdd475987" />
 
 > **Hindi Shayari Portal** — A premium, modern Hindi Poetry web application featuring dynamic atmospheric moods, advanced search, daily curated verses, and Gemini-powered custom Shayari generation with intelligent deployment fallbacks.
