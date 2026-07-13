@@ -262,3 +262,10 @@ async function startServer() {
 }
 
 startServer();
+
+// Only start standard Express listener when running locally or on self-hosted environments (not on Vercel serverless)
+if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+  startServer();
+}
+
+export default app;
