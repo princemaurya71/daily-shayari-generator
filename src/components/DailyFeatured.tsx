@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Calendar, Quote, Copy, Check, Share2, Heart, MessageSquare } from 'lucide-react';
 import { Shayari } from '../types';
+import { SEED_SHAYARIS } from '../data/shayariData';
 
 interface DailyFeaturedProps {
   favorites: string[];
@@ -21,13 +22,27 @@ export default function DailyFeatured({ favorites, onToggleFavorite }: DailyFeat
           const result = await response.json();
           if (result.success && result.data) {
             setDailyShayari(result.data);
+            setLoading(false);
+            return;
           }
         }
       } catch (error) {
         console.error('Error fetching daily shayari:', error);
-      } finally {
-        setLoading(false);
       }
+
+      // Client-side fallback for static deployments (like Vercel) or API issues
+      const todayStr = new Date().toDateString();
+      let hash = 0;
+      for (let i = 0; i < todayStr.length; i++) {
+        hash = todayStr.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const index = Math.abs(hash) % SEED_SHAYARIS.length;
+      const fallbackShayari = SEED_SHAYARIS[index];
+      setDailyShayari({
+        ...fallbackShayari,
+        meaning: `[Featured Pick] ${fallbackShayari.meaning}`
+      });
+      setLoading(false);
     }
     fetchDaily();
   }, []);
